@@ -1,0 +1,79 @@
+CREATE TABLE departments(
+id INT AUTO_INCREMENT PRIMARY KEY,
+NAME VARCHAR(50) NOT NULL,
+is_active TINYINT DEFAULT 1
+);
+
+CREATE TABLE roles(
+id INT AUTO_INCREMENT PRIMARY KEY,
+NAME VARCHAR(50) NOT NULL,
+is_active TINYINT DEFAULT 1
+);
+
+CREATE TABLE employees(
+id INT AUTO_INCREMENT PRIMARY KEY,
+department_id INT NOT NULL,
+role_id INT NOT NULL,
+CODE VARCHAR(20) NOT NULL UNIQUE,
+NAME VARCHAR(50) NOT NULL,
+email_id VARCHAR(50) NOT NULL UNIQUE,
+PASSWORD VARCHAR(50) NOT NULL,
+is_active TINYINT DEFAULT 1,
+CONSTRAINT fk_dept_id FOREIGN KEY (department_id) REFERENCES departments(id),
+CONSTRAINT fk_role_id FOREIGN KEY (role_id) REFERENCES roles(id)
+);
+
+CREATE TABLE users(
+id INT AUTO_INCREMENT PRIMARY KEY,
+NAME VARCHAR(50) NOT NULL,
+email_id VARCHAR(50) NOT NULL UNIQUE,
+PASSWORD VARCHAR(50) NOT NULL,
+is_active TINYINT DEFAULT 1);
+
+CREATE TABLE priorities(
+id INT AUTO_INCREMENT PRIMARY KEY,
+NAME VARCHAR(50) NOT NULL,
+is_active TINYINT DEFAULT 1);
+
+CREATE TABLE tickets(
+id INT AUTO_INCREMENT PRIMARY KEY,
+summary VARCHAR(500) NOT NULL,
+description VARCHAR(500),
+user_id INT NOT NULL,
+priority_id INT NOT NULL,
+department_id INT NOT NULL,
+created_on TIMESTAMP,
+assigned_employee_id INT NOT NULL,
+solution VARCHAR(500),
+addressed_on TIMESTAMP,
+STATUS VARCHAR(50) DEFAULT 'Open',
+CONSTRAINT fk_priority_id FOREIGN KEY (priority_id) REFERENCES priorities(id),
+CONSTRAINT fk_tickets_department_id FOREIGN KEY (department_id) REFERENCES departments(id),
+CONSTRAINT fk_employee_id FOREIGN KEY (assigned_employee_id) REFERENCES employees(id),
+CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+INSERT INTO departments(NAME) VALUES('HR'),('Finance'),('Research and Development'),('Marketing')
+
+INSERT INTO roles(NAME) VALUES ('HR Admin'),('HR Employee'),('Finance Admin'),('Finance Employee'),('Research and Development Admin'),('Research and Development Employee'),('Marketing Admin'),('Marketing Employee')
+
+INSERT INTO priorities (NAME) VALUES('High'),('Medium'),('Low')
+
+INSERT INTO employees(department_id,role_id,CODE,NAME,email_id,PASSWORD) VALUES 
+(1,1,'EMP001','Richardson','richardson@gmail.com','pass123$'),
+(1,2,'EMP002','Thomas','thomas@gmail.com','pass123$'),
+(1,2,'EMP003','Robinson','robinson@gmail.com','pass123$'),
+(2,3,'EMP004','Harry','harry@gmail.com','pass123$'),
+(2,4,'EMP005','Robert','robert@gmail.com','pass123$'),
+(2,4,'EMP006','Christopher','christopher@gmail.com','pass123$'),
+(3,5,'EMP007','Charles','charles@gmail.com','pass123$'),
+(3,6,'EMP008','Peter','peter@gmail.com','pass123$'),
+(3,6,'EMP009','Wilson','wilson@gmail.com','pass123$'),
+(4,7,'EMP010','Denny','denny@gmail.com','pass123$'),
+(4,8,'EMP011','Aron','aron@gmail.com','pass123$'),
+(4,8,'EMP012','Marry','marry@gmail.com','pass123$'),
+(4,8,'EMP013','June','june@gmail.com','pass123$'),
+(4,8,'EMP014','Doughlas','doughlas@gmail.com','pass123$')
+
+
+INSERT INTO users(NAME,email_id,PASSWORD) VALUES('Chitra','chitrapaij@gmail.com','pass123$'),('Amy','amy@gmail.com','pass123$')
