@@ -42,7 +42,7 @@ description VARCHAR(500),
 user_id INT NOT NULL,
 priority_id INT NOT NULL,
 department_id INT NOT NULL,
-created_on TIMESTAMP,co
+created_on TIMESTAMP,
 assigned_employee_id INT NOT NULL,
 solution VARCHAR(500),
 addressed_on TIMESTAMP,
