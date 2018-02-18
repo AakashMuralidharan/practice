@@ -42,7 +42,7 @@ description VARCHAR(500),
 user_id INT NOT NULL,
 priority_id INT NOT NULL,
 department_id INT NOT NULL,
-created_on TIMESTAMP,
+created_on TIMESTAMP,co
 assigned_employee_id INT NOT NULL,
 solution VARCHAR(500),
 addressed_on TIMESTAMP,
@@ -53,11 +53,11 @@ CONSTRAINT fk_employee_id FOREIGN KEY (assigned_employee_id) REFERENCES employee
 CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-INSERT INTO departments(NAME) VALUES('HR'),('Finance'),('Research and Development'),('Marketing')
+INSERT INTO departments(NAME) VALUES('HR'),('Finance'),('Research and Development'),('Marketing');
 
-INSERT INTO roles(NAME) VALUES ('HR Admin'),('HR Employee'),('Finance Admin'),('Finance Employee'),('Research and Development Admin'),('Research and Development Employee'),('Marketing Admin'),('Marketing Employee')
+INSERT INTO roles(NAME) VALUES ('HR Admin'),('HR Employee'),('Finance Admin'),('Finance Employee'),('Research and Development Admin'),('Research and Development Employee'),('Marketing Admin'),('Marketing Employee');
 
-INSERT INTO priorities (NAME) VALUES('High'),('Medium'),('Low')
+INSERT INTO priorities (NAME) VALUES('High'),('Medium'),('Low');
 
 INSERT INTO employees(department_id,role_id,CODE,NAME,email_id,PASSWORD) VALUES 
 (1,1,'EMP001','Richardson','richardson@gmail.com','pass123$'),
@@ -73,7 +73,7 @@ INSERT INTO employees(department_id,role_id,CODE,NAME,email_id,PASSWORD) VALUES
 (4,8,'EMP011','Aron','aron@gmail.com','pass123$'),
 (4,8,'EMP012','Marry','marry@gmail.com','pass123$'),
 (4,8,'EMP013','June','june@gmail.com','pass123$'),
-(4,8,'EMP014','Doughlas','doughlas@gmail.com','pass123$')
+(4,8,'EMP014','Doughlas','doughlas@gmail.com','pass123$');
 
 
-INSERT INTO users(NAME,email_id,PASSWORD) VALUES('Chitra','chitrapaij@gmail.com','pass123$'),('Amy','amy@gmail.com','pass123$')
+INSERT INTO users(NAME,email_id,PASSWORD) VALUES('Chitra','chitrapaij@gmail.com','pass123$'),('Amy','amy@gmail.com','pass123$');
